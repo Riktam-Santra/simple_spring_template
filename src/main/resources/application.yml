@@ -1,0 +1,23 @@
+server:
+  port: ${SERVER_PORT}
+
+spring:
+  application:
+    name: "APPLICATION_NAME"
+  datasource:
+    url: ${DATABASE_URL}
+    username: ${DATABASE_USERNAME}
+    password: ${DATABASE_PASSWORD}
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: ${DDL_MODE}
+    database: postgresql
+    show-sql: true
+token:
+  signing:
+    key: ${TOKEN_SIGNING_KEY}
+logging:
+  level:
+    org.springframework.web.filter.CommonsRequestLoggingFilter: DEBUG
+    web: debug
