@@ -1,13 +1,13 @@
-package com.ricksntra.spring_jwt_jpa_template;
+package com.ricksntra.otp_attendance_backend;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SpringJwtJpaTemplateApplication {
+public class OtpAttendanceBackendApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(SpringJwtJpaTemplateApplication.class, args);
+        SpringApplication.run(OtpAttendanceBackendApplication.class, args);
     }
 
 }

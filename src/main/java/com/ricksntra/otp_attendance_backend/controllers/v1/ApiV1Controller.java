@@ -1,4 +1,4 @@
-package com.ricksntra.spring_jwt_jpa_template.controllers.v1;
+package com.ricksntra.otp_attendance_backend.controllers.v1;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 

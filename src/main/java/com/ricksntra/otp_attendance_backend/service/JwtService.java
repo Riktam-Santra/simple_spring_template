@@ -1,4 +1,4 @@
-package com.ricksntra.spring_jwt_jpa_template.service;
+package com.ricksntra.otp_attendance_backend.service;
 
 import org.springframework.security.core.userdetails.UserDetails;
 

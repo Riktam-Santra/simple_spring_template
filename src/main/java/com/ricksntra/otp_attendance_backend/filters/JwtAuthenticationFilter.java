@@ -1,6 +1,6 @@
-package com.ricksntra.spring_jwt_jpa_template.filters;
+package com.ricksntra.otp_attendance_backend.filters;
 
-import com.ricksntra.spring_jwt_jpa_template.service.JwtService;
+import com.ricksntra.otp_attendance_backend.service.JwtService;
 import io.micrometer.common.util.StringUtils;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
@@ -29,15 +29,16 @@ import java.io.IOException;
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
     JwtService jwtService;
     UserDetailsService userService;
+
     @Override
     protected void doFilterInternal(@NonNull HttpServletRequest request,
-                                    @NonNull HttpServletResponse response, @NonNull FilterChain filterChain)
+                                    @NonNull HttpServletResponse response,
+                                    @NonNull FilterChain filterChain)
             throws ServletException, IOException {
         final String authHeader = request.getHeader("Authorization");
         final String jwt;
         final String userEmail;
         if (StringUtils.isEmpty(authHeader) || !authHeader.startsWith("Bearer ")) {
-            log.info("Dropped Request: {} {}", request.getMethod(),request.getRequestURI());
             filterChain.doFilter(request, response);
             return;
         }

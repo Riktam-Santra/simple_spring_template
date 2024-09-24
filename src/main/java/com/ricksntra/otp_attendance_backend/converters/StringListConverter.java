@@ -1,4 +1,4 @@
-package com.ricksntra.spring_jwt_jpa_template.converters;
+package com.ricksntra.otp_attendance_backend.converters;
 
 import jakarta.persistence.AttributeConverter;
 import jakarta.persistence.Converter;
