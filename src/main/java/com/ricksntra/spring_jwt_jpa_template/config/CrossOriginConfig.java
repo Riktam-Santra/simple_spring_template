@@ -1,4 +1,4 @@
-package com.ricksntra.otp_attendance_backend.config;
+package com.ricksntra.spring_jwt_jpa_template.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

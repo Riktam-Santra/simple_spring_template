@@ -1,6 +1,6 @@
-package com.ricksntra.otp_attendance_backend.service.serviceimpl;
+package com.ricksntra.spring_jwt_jpa_template.service.serviceimpl;
 
-import com.ricksntra.otp_attendance_backend.service.JwtService;
+import com.ricksntra.spring_jwt_jpa_template.service.JwtService;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.io.Decoders;

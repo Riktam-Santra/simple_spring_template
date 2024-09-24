@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: "OTP Attendance Backend"
+    name: "APPLICATION_NAME"
   datasource:
     url: ${DATABASE_URL}
     username: ${DATABASE_USERNAME}

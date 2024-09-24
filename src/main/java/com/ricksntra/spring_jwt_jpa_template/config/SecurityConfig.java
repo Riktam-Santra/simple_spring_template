@@ -1,6 +1,6 @@
-package com.ricksntra.otp_attendance_backend.config;
+package com.ricksntra.spring_jwt_jpa_template.config;
 
-import com.ricksntra.otp_attendance_backend.filters.JwtAuthenticationFilter;
+import com.ricksntra.spring_jwt_jpa_template.filters.JwtAuthenticationFilter;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
@@ -55,7 +55,6 @@ public class SecurityConfig {
         http.csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(request -> request
                         .requestMatchers("/api/v1/auth/**").permitAll()
-                        .requestMatchers("/api/v1/ping").permitAll()
                         .anyRequest().authenticated()
                 )
                 .sessionManagement(manager -> manager.sessionCreationPolicy(STATELESS))

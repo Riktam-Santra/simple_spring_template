@@ -1,4 +1,4 @@
-package com.ricksntra.otp_attendance_backend;
+package com.ricksntra.spring_jwt_jpa_template;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
