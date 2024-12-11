@@ -1,5 +1,7 @@
 package com.ricksntra.spring_jwt_jpa_template.filters;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.ricksntra.spring_jwt_jpa_template.responsemodels.ErrorResponse;
 import com.ricksntra.spring_jwt_jpa_template.service.JwtService;
 import io.micrometer.common.util.StringUtils;
 import jakarta.servlet.FilterChain;
@@ -29,6 +31,7 @@ import java.io.IOException;
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
     JwtService jwtService;
     UserDetailsService userService;
+    ObjectMapper objectMapper;
     @Override
     protected void doFilterInternal(@NonNull HttpServletRequest request,
                                     @NonNull HttpServletResponse response, @NonNull FilterChain filterChain)
@@ -46,6 +49,17 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         if (StringUtils.isNotEmpty(userEmail)
                 && SecurityContextHolder.getContext().getAuthentication() == null) {
             UserDetails userDetails = userService.loadUserByUsername(userEmail);
+            if (!jwtService.isTokenValid(authHeader, userDetails)) {
+                log.info("Dropped Request: {} {}", request.getMethod(), request.getRequestURI());
+                response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+                response.getWriter().write(objectMapper.writeValueAsString(
+                                ErrorResponse.builder()
+                                        .error("TOKEN_EXPIRED")
+                                        .description("Given auth token has Expired.").build()
+                        )
+                );
+                return;
+            }
             if (jwtService.isTokenValid(jwt, userDetails)) {
                 SecurityContext context = SecurityContextHolder.createEmptyContext();
                 UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(
